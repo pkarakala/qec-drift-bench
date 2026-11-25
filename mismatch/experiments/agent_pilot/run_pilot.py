@@ -22,6 +22,7 @@ import argparse
 import json
 import os
 import shutil
+import signal
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -53,6 +54,18 @@ def command(cli: str, model: str, prompt: str) -> list[str]:
     raise ValueError(cli)
 
 
+def stop_group(p: subprocess.Popen) -> None:
+    """End the CLI and everything it started (an agent's background jobs and their worker
+    pools), on timeout and on a normal exit alike, so no episode's processes outlive it and
+    take CPU from the next one (2026-11-25: orphaned pools pushed the load to 100 on 8 cores)."""
+    for sig in (signal.SIGTERM, signal.SIGKILL):
+        try:
+            os.killpg(p.pid, sig)
+        except ProcessLookupError:
+            return
+        time.sleep(2)
+
+
 def episode(cli, model, env, k, timeout_s, tier="standard"):
     kit, runs = (HERE, HERE / "runs") if tier == "standard" else (HERE / tier, HERE / f"runs_{tier}")
     d = runs / f"{cli}-{model.replace('@', '-')}" / env / f"r{k}"
@@ -66,12 +79,14 @@ def episode(cli, model, env, k, timeout_s, tier="standard"):
     t0 = time.time()
     with open(d / "transcript.jsonl", "w") as out, open(d / "stderr.txt", "w") as err:
         p = subprocess.Popen(command(cli, model, (d / "PROMPT.md").read_text()), cwd=d,
-                             stdin=subprocess.DEVNULL, stdout=out, stderr=err, env=env_vars)
+                             stdin=subprocess.DEVNULL, stdout=out, stderr=err, env=env_vars,
+                             start_new_session=True)
         try:
             rc = p.wait(timeout=timeout_s)
         except subprocess.TimeoutExpired:
-            p.kill()
             rc = "timeout"
+        finally:
+            stop_group(p)
     (d / "done.json").write_text(json.dumps({
         "cli": cli, "model": model, "env": env, "rollout": k, "tier": tier, "returncode": rc,
         "wall_s": round(time.time() - t0),
