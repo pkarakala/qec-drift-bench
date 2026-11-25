@@ -5,8 +5,9 @@ usage: python3 run_pilot.py [--agents claude:claude-opus-5-5,agy:<slug>@high,cod
 
 For each agent, environment and rollout, copies <env>/ into runs/<cli>-<model>/<env>/r<k>/ and
 runs that CLI headless there with PROMPT.md. Keeps the transcript, solution.py and
-NOTES_AGENT.md. Skips runs that already have done.json, so it can resume; delete a done.json to
-rerun that episode. With --tier hard the kit comes from hard/<env>/ (make_kit.py hard --tier
+NOTES_AGENT.md. Skips runs whose done.json shows a finished or timed-out episode, so it can resume; an
+episode that exited with an error (expired login, usage limit) runs again. Delete a done.json
+to rerun any episode. With --tier hard the kit comes from hard/<env>/ (make_kit.py hard --tier
 hard) and the runs go to runs_hard/. Permissions per CLI:
   claude  acceptEdits, file tools plus `python`, `ls`, `head`, `wc` in Bash; no web, no subagents
   codex   `codex exec --sandbox workspace-write` (writes only in the run folder, no network)
@@ -55,8 +56,9 @@ def command(cli: str, model: str, prompt: str) -> list[str]:
 def episode(cli, model, env, k, timeout_s, tier="standard"):
     kit, runs = (HERE, HERE / "runs") if tier == "standard" else (HERE / tier, HERE / f"runs_{tier}")
     d = runs / f"{cli}-{model.replace('@', '-')}" / env / f"r{k}"
-    if (d / "done.json").exists():
-        return
+    done = d / "done.json"
+    if done.exists() and json.loads(done.read_text()).get("returncode") in (0, "timeout"):
+        return  # an episode that failed to start (expired login, usage limit) runs again
     if d.exists():
         shutil.rmtree(d)
     shutil.copytree(kit / env, d)
