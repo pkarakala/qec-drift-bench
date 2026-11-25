@@ -1,0 +1,171 @@
+{
+ "threshold": 0.75,
+ "rule": "usage: python experiments/selection.py [--threshold 0.75]",
+ "tasks": [
+  {
+   "env": "qec_drift_d3",
+   "tier": "standard",
+   "status": "excluded",
+   "best": "claude-opus-5-5",
+   "best_pass": 0.9883333333333333,
+   "reason": "best agent claude-opus-5-5 passes 0.99",
+   "stats": {
+    "trivial": {
+     "n": 200,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 200,
+     "pass_rate": 0.965,
+     "score": 0.9586834319962705
+    },
+    "claude-haiku-5-5": {
+     "n": 600,
+     "pass_rate": 0.86,
+     "score": 0.8559548536948182
+    },
+    "claude-opus-5-5": {
+     "n": 600,
+     "pass_rate": 0.9883333333333333,
+     "score": 0.9751681220559512
+    },
+    "claude-sonnet-5-5": {
+     "n": 600,
+     "pass_rate": 0.9233333333333333,
+     "score": 0.9215046120485102
+    }
+   }
+  },
+  {
+   "env": "readout_drift",
+   "tier": "standard",
+   "status": "excluded",
+   "best": "claude-opus-5-5",
+   "best_pass": 0.9488888888888889,
+   "reason": "best agent claude-opus-5-5 passes 0.95",
+   "stats": {
+    "trivial": {
+     "n": 300,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 300,
+     "pass_rate": 0.93,
+     "score": 0.9281744157979449
+    },
+    "claude-haiku-5-5": {
+     "n": 900,
+     "pass_rate": 0.8477777777777776,
+     "score": 0.8535700831564231
+    },
+    "claude-opus-5-5": {
+     "n": 900,
+     "pass_rate": 0.9488888888888889,
+     "score": 0.9487887547706371
+    },
+    "claude-sonnet-5-5": {
+     "n": 900,
+     "pass_rate": 0.7355555555555555,
+     "score": 0.7298676999053647
+    }
+   }
+  },
+  {
+   "env": "pulse_wrong_model",
+   "tier": "standard",
+   "status": "excluded",
+   "best": "claude-haiku-5-5",
+   "best_pass": 0.9947916666666666,
+   "reason": "best agent claude-haiku-5-5 passes 0.99",
+   "stats": {
+    "trivial": {
+     "n": 320,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 320,
+     "pass_rate": 0.996875,
+     "score": 0.9938169376083927
+    },
+    "claude-haiku-5-5": {
+     "n": 960,
+     "pass_rate": 0.9947916666666666,
+     "score": 0.9895050237221504
+    },
+    "claude-opus-5-5": {
+     "n": 960,
+     "pass_rate": 0.9947916666666666,
+     "score": 0.9929738453570511
+    },
+    "claude-sonnet-5-5": {
+     "n": 960,
+     "pass_rate": 0.9802083333333332,
+     "score": 0.9721842684253854
+    }
+   }
+  },
+  {
+   "env": "qec_drift_d3",
+   "tier": "hard",
+   "status": "pending",
+   "best": null,
+   "best_pass": null,
+   "reason": "no agent runs; reference pass 0.67",
+   "stats": {
+    "trivial": {
+     "n": 100,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 100,
+     "pass_rate": 0.67,
+     "score": 0.7315999999999999
+    }
+   }
+  },
+  {
+   "env": "readout_drift",
+   "tier": "hard",
+   "status": "pending",
+   "best": null,
+   "best_pass": null,
+   "reason": "no agent runs; reference pass 0.65",
+   "stats": {
+    "trivial": {
+     "n": 150,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 150,
+     "pass_rate": 0.6466666666666666,
+     "score": 0.7417149716560199
+    }
+   }
+  },
+  {
+   "env": "pulse_wrong_model",
+   "tier": "hard",
+   "status": "pending",
+   "best": null,
+   "best_pass": null,
+   "reason": "no agent runs; reference pass 0.61",
+   "stats": {
+    "trivial": {
+     "n": 160,
+     "pass_rate": 0.5,
+     "score": 0.5
+    },
+    "reference": {
+     "n": 160,
+     "pass_rate": 0.6125,
+     "score": 0.6259187645548469
+    }
+   }
+  }
+ ]
+}

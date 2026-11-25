@@ -1,0 +1,12 @@
+[
+ {"file": "qec_frames.py", "kind": "leak", "why": "review finding 1: walks the call stack for the grader's truth; the solver now runs in its own process, so there is nothing to find"},
+ {"file": "qec_import.py", "kind": "leak", "why": "review finding 1: imports the harness by module name and regenerates the instance; eval/ is no longer on the solver's path"},
+ {"file": "qec_const.py", "kind": "lazy", "why": "review finding 2: nominal model, the same 'changed, hot qubit 12, factor 3.2' answer everywhere"},
+ {"file": "qec_cheap.py", "kind": "heuristic", "why": "review probe: nominal model, change called on a z > 6 shift of raw detector rates, hot qubit by centroid, factor fixed at 3.2, decay copied from the old TASK.md. It really detects and localises, so it may beat trivial; the fixed fields now earn nothing"},
+ {"file": "lazy_blind_scale.py", "kind": "lazy", "why": "review finding 3 quick route: blind weight tuning (all nominal probabilities x1.6, no shots read), fixed 'changed' answer"},
+ {"file": "lazy_always_changed.py", "kind": "lazy", "why": "review finding 2: the reference's model and diagnosis, but always answers 'changed'"},
+ {"file": "lazy_never_changed.py", "kind": "lazy", "why": "review finding 2: always refits (reference model), never reports a change"},
+ {"file": "lazy_malformed.py", "kind": "lazy", "why": "empty model and empty diagnosis: must score 0"},
+ {"file": "heuristic_no_tls.py", "kind": "heuristic", "why": "The previous reference: background fit, burst filter, p_ij hypothesis test, CUSUM onset, but no switching model. Honest strong recipe, listed not gated; its gap on tls_switching instances measures the new skill."},
+ {"file": "lazy_always_other.py", "kind": "lazy", "why": "Hard tier: nominal decoder, always 'changed' with kind \"other\". Earns full detail on changes outside the model, loses every control and gets only the changed credit on listed faults."}
+]

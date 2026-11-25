@@ -17,6 +17,10 @@ A benchmark for AI models that must identify a quantum noise fault and build a w
 
 Columns are the model's reasoning settings. “Not run” means the evaluation was not completed, not a 0% score. Incomplete model evaluations are documented in the paper appendix. These tasks were selected during development, so the percentages describe performance on this task set.
 
+## Mismatch track
+
+A second track of three hard tasks: QEC decoding, qubit readout and an X-gate pulse, each with a change outside the stated model. The agent returns data, and each task's own grader scores it. Tasks are kept only while the best agent passes under 75%. See [mismatch/README.md](mismatch/README.md).
+
 ## Paper and analysis
 
 - [Paper PDF: four main pages, plus references and appendix](paper/workshop-20261111/QEC_Drift_Workshop_Paper.pdf), by Logan Mann and Pranav Reddy, University of California, Santa Barbara.

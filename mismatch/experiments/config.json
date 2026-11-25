@@ -1,0 +1,368 @@
+{
+ "version": "v1-paper-2026-11-15",
+ "note": "Frozen before any model run. Paper seeds were drawn once with secrets.randbelow(2**31) on 2026-11-15 and never used in development. Lazy and leak checks run on the first check_seeds paper seeds only (they are gates, not results). The Kaggle private split is NOT here: it lives only with the host (see docs/kaggle-v1-scope.md). 2026-11-17: readout instance order shuffled per seed (fixes a call-counting leak found in a re-audit) and leak_order added; per-instance scores are order-independent, so earlier readout runs stay valid except reference_swapped_data, which was rerun.",
+ "paper_seeds": [
+  737500003,
+  1831243297,
+  1405069557,
+  51634295,
+  312674740,
+  1743275398,
+  915853792,
+  1293610005,
+  2100526050,
+  578767558
+ ],
+ "envs": [
+  "qec_drift_d3",
+  "readout_drift",
+  "pulse_wrong_model"
+ ],
+ "bootstrap": {
+  "resamples": 10000,
+  "rng_seed": 20261115,
+  "level": 0.95
+ },
+ "solutions": {
+  "qec_drift_d3": {
+   "trivial": [
+    "eval/_trivial.py",
+    "floor"
+   ],
+   "reference": [
+    "eval/_reference.py",
+    "reference"
+   ],
+   "ref_no_fix": [
+    "../experiments/solutions/qec_drift_d3/ref_no_fix.py",
+    "ablation"
+   ],
+   "ref_no_diag": [
+    "../experiments/solutions/qec_drift_d3/ref_no_diag.py",
+    "ablation"
+   ],
+   "reference_swapped_data": [
+    "eval/_reference.py",
+    "data_ablation"
+   ],
+   "heuristic_no_tls": [
+    "checks/heuristic_no_tls.py",
+    "heuristic"
+   ],
+   "qec_cheap": [
+    "checks/qec_cheap.py",
+    "heuristic"
+   ],
+   "qec_const": [
+    "checks/qec_const.py",
+    "lazy"
+   ],
+   "lazy_blind_scale": [
+    "checks/lazy_blind_scale.py",
+    "lazy"
+   ],
+   "lazy_always_changed": [
+    "checks/lazy_always_changed.py",
+    "lazy"
+   ],
+   "lazy_never_changed": [
+    "checks/lazy_never_changed.py",
+    "lazy"
+   ],
+   "lazy_malformed": [
+    "checks/lazy_malformed.py",
+    "lazy"
+   ],
+   "qec_frames": [
+    "checks/qec_frames.py",
+    "leak"
+   ],
+   "qec_import": [
+    "checks/qec_import.py",
+    "leak"
+   ]
+  },
+  "readout_drift": {
+   "trivial": [
+    "eval/_trivial.py",
+    "floor"
+   ],
+   "reference": [
+    "eval/_reference.py",
+    "reference"
+   ],
+   "ref_no_fix": [
+    "../experiments/solutions/readout_drift/ref_no_fix.py",
+    "ablation"
+   ],
+   "ref_no_diag": [
+    "../experiments/solutions/readout_drift/ref_no_diag.py",
+    "ablation"
+   ],
+   "reference_swapped_data": [
+    "eval/_reference.py",
+    "data_ablation"
+   ],
+   "lazy_const": [
+    "checks/lazy_const.py",
+    "lazy"
+   ],
+   "lazy_blind_refit": [
+    "checks/lazy_blind_refit.py",
+    "lazy"
+   ],
+   "lazy_refit_changed": [
+    "checks/lazy_refit_changed.py",
+    "lazy"
+   ],
+   "lazy_malformed": [
+    "checks/lazy_malformed.py",
+    "lazy"
+   ],
+   "leak_frames": [
+    "checks/leak_frames.py",
+    "leak"
+   ],
+   "leak_import": [
+    "checks/leak_import.py",
+    "leak"
+   ],
+   "leak_position": [
+    "checks/leak_position.py",
+    "leak"
+   ],
+   "leak_order": [
+    "checks/leak_order.py",
+    "leak"
+   ]
+  },
+  "pulse_wrong_model": {
+   "trivial": [
+    "eval/_trivial.py",
+    "floor"
+   ],
+   "reference": [
+    "eval/_reference.py",
+    "reference"
+   ],
+   "ref_no_fix": [
+    "../experiments/solutions/pulse_wrong_model/ref_no_fix.py",
+    "ablation"
+   ],
+   "ref_no_diag": [
+    "../experiments/solutions/pulse_wrong_model/ref_no_diag.py",
+    "ablation"
+   ],
+   "reference_swapped_data": [
+    "eval/_reference.py",
+    "data_ablation"
+   ],
+   "heuristic_linear_model": [
+    "checks/heuristic_linear_model.py",
+    "heuristic"
+   ],
+   "lazy_const": [
+    "checks/lazy_const.py",
+    "lazy"
+   ],
+   "lazy_malformed": [
+    "checks/lazy_malformed.py",
+    "lazy"
+   ],
+   "lazy_blind_refit": [
+    "checks/lazy_blind_refit.py",
+    "lazy"
+   ],
+   "lazy_blind_robust": [
+    "checks/lazy_blind_robust.py",
+    "lazy"
+   ],
+   "lazy_always_changed_robust": [
+    "checks/lazy_always_changed_robust.py",
+    "lazy"
+   ],
+   "leak_import": [
+    "checks/leak_import.py",
+    "leak"
+   ],
+   "leak_frames": [
+    "checks/leak_frames.py",
+    "leak"
+   ]
+  }
+ },
+ "check_seeds": 3,
+ "tiers": {
+  "hard": {
+   "note": "Hard tier (2026-11-18): every task adds a change outside the stated model, reported as 'other' (QEC: a correlated error on two data qubits, with the listed faults drawn weak and kept only with >= 20 nats of exact evidence; readout: an IQ-plane stretch; pulse: drive strength on the higher transitions, with a 6 ns gate). Same paper seeds (salted per tier), evaluate.py --tier hard. Kind 'ceiling' = the reference told the form of the unlisted change (never its size); not a valid solver.",
+   "solutions": {
+    "qec_drift_d3": {
+     "trivial": [
+      "eval/_trivial.py",
+      "floor"
+     ],
+     "reference": [
+      "eval/_reference.py",
+      "reference"
+     ],
+     "reference_swapped_data": [
+      "eval/_reference.py",
+      "data_ablation"
+     ],
+     "heuristic_no_tls": [
+      "checks/heuristic_no_tls.py",
+      "heuristic"
+     ],
+     "qec_cheap": [
+      "checks/qec_cheap.py",
+      "heuristic"
+     ],
+     "qec_const": [
+      "checks/qec_const.py",
+      "lazy"
+     ],
+     "lazy_blind_scale": [
+      "checks/lazy_blind_scale.py",
+      "lazy"
+     ],
+     "lazy_always_changed": [
+      "checks/lazy_always_changed.py",
+      "lazy"
+     ],
+     "lazy_never_changed": [
+      "checks/lazy_never_changed.py",
+      "lazy"
+     ],
+     "lazy_malformed": [
+      "checks/lazy_malformed.py",
+      "lazy"
+     ],
+     "qec_frames": [
+      "checks/qec_frames.py",
+      "leak"
+     ],
+     "qec_import": [
+      "checks/qec_import.py",
+      "leak"
+     ],
+     "genie_corr": [
+      "../experiments/solutions/qec_drift_d3/genie_corr.py",
+      "ceiling"
+     ],
+     "lazy_always_other": [
+      "checks/lazy_always_other.py",
+      "lazy"
+     ]
+    },
+    "readout_drift": {
+     "trivial": [
+      "eval/_trivial.py",
+      "floor"
+     ],
+     "reference": [
+      "eval/_reference.py",
+      "reference"
+     ],
+     "reference_swapped_data": [
+      "eval/_reference.py",
+      "data_ablation"
+     ],
+     "lazy_const": [
+      "checks/lazy_const.py",
+      "lazy"
+     ],
+     "lazy_blind_refit": [
+      "checks/lazy_blind_refit.py",
+      "lazy"
+     ],
+     "lazy_refit_changed": [
+      "checks/lazy_refit_changed.py",
+      "lazy"
+     ],
+     "lazy_malformed": [
+      "checks/lazy_malformed.py",
+      "lazy"
+     ],
+     "leak_frames": [
+      "checks/leak_frames.py",
+      "leak"
+     ],
+     "leak_import": [
+      "checks/leak_import.py",
+      "leak"
+     ],
+     "leak_position": [
+      "checks/leak_position.py",
+      "leak"
+     ],
+     "leak_order": [
+      "checks/leak_order.py",
+      "leak"
+     ],
+     "genie_stretch": [
+      "../experiments/solutions/readout_drift/genie_stretch.py",
+      "ceiling"
+     ],
+     "lazy_always_other": [
+      "checks/lazy_always_other.py",
+      "lazy"
+     ]
+    },
+    "pulse_wrong_model": {
+     "trivial": [
+      "eval/_trivial.py",
+      "floor"
+     ],
+     "reference": [
+      "eval/_reference.py",
+      "reference"
+     ],
+     "reference_swapped_data": [
+      "eval/_reference.py",
+      "data_ablation"
+     ],
+     "heuristic_linear_model": [
+      "checks/heuristic_linear_model.py",
+      "heuristic"
+     ],
+     "lazy_const": [
+      "checks/lazy_const.py",
+      "lazy"
+     ],
+     "lazy_malformed": [
+      "checks/lazy_malformed.py",
+      "lazy"
+     ],
+     "lazy_blind_refit": [
+      "checks/lazy_blind_refit.py",
+      "lazy"
+     ],
+     "lazy_blind_robust": [
+      "checks/lazy_blind_robust.py",
+      "lazy"
+     ],
+     "lazy_always_changed_robust": [
+      "checks/lazy_always_changed_robust.py",
+      "lazy"
+     ],
+     "leak_import": [
+      "checks/leak_import.py",
+      "leak"
+     ],
+     "leak_frames": [
+      "checks/leak_frames.py",
+      "leak"
+     ],
+     "genie_drive12": [
+      "../experiments/solutions/pulse_wrong_model/genie_drive12.py",
+      "ceiling"
+     ],
+     "lazy_always_other": [
+      "checks/lazy_always_other.py",
+      "lazy"
+     ]
+    }
+   }
+  }
+ }
+}
