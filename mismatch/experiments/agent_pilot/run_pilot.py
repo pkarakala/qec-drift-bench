@@ -61,9 +61,13 @@ def stop_group(p: subprocess.Popen) -> None:
     for sig in (signal.SIGTERM, signal.SIGKILL):
         try:
             os.killpg(p.pid, sig)
-        except ProcessLookupError:
-            return
+        except (ProcessLookupError, PermissionError):  # macOS: EPERM once only zombies remain
+            break
         time.sleep(2)
+    try:
+        p.wait(timeout=10)  # reap the CLI itself
+    except subprocess.TimeoutExpired:
+        pass
 
 
 def episode(cli, model, env, k, timeout_s, tier="standard"):
