@@ -38,6 +38,9 @@ notice a broken model without having seen an example of it.
   eval/_reference.py   the strongest known method that trusts the stated model
   sandbox/solution.py  the starter, which behaves like trivial
   checks/              lazy and leak solutions, listed in checks/expect.json
+  ceilings/            the reference told the form (never the size) of the hard tier's
+                       unlisted change: how much of the tier a solver that finds it can reach
+  REVIEW.json          human review record and justified flags (optional until review)
   NOTES.md             predictions written before measuring, then the measurements
 ```
 
@@ -60,7 +63,13 @@ notice a broken model without having seen an example of it.
 - `scripts/envs_legitimacy.py`: every lazy and leak solution in `checks/` scores at most
   trivial + 0.05, the reference on swapped data falls to that bar, and the reference beats it.
 - `scripts/select_tasks.py`: the best agent model passes under 75% of the instances, averaged
-  over its rollouts. A task at or above that bar leaves (docs/envs-results.md).
+  over its rollouts. A task at or above that bar leaves (docs/envs-results.md). Each
+  model's rate carries a 95% cluster-bootstrap interval; a close call is marked.
+- `scripts/accept_task.py`: the whole acceptance standard,
+  [docs/task-standard.md](../docs/task-standard.md): 13 automatic gates (the two above among
+  them, plus determinism, floor, guess battery, isolation probe, solvable, learnable,
+  identifiable, stable, budget, provenance), the selection rule, and 3 human gates. Cards in
+  [docs/envs-acceptance.md](../docs/envs-acceptance.md).
 
 ## Run it
 
