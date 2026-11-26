@@ -3,6 +3,13 @@
  "config": "envs-v1-2026-11-26",
  "tasks": [
   {
+   "task": "coherence_tls",
+   "status": "pending",
+   "best": null,
+   "best_pass": null,
+   "models": {}
+  },
+  {
    "task": "pulse_wrong_model",
    "status": "included",
    "best": "claude-sonnet-5-5",

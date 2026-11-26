@@ -2,6 +2,18 @@
  "config": "envs-v1-2026-11-26",
  "tier": "hard",
  "tasks": {
+  "coherence_tls": {
+   "trivial": {
+    "pass_rate": 0.5,
+    "score": 0.5,
+    "instances": 160
+   },
+   "reference": {
+    "pass_rate": 0.73125,
+    "score": 0.7697839108683924,
+    "instances": 160
+   }
+  },
   "pulse_wrong_model": {
    "trivial": {
     "pass_rate": 0.5,

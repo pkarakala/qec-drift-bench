@@ -43,4 +43,19 @@ other environments do not cover (they work at a fixed frequency).
 
 ## Measured
 
-(filled in from experiments/results after the paper-seed runs)
+Hard tier, 5 paper seeds (docs/envs-acceptance.md). Pass rate is the QEC-Drift rule per
+instance; native score in brackets.
+
+- trivial 0.50 (0.50); reference 0.73 (0.77); ceiling genie_switch 0.95 native.
+- The reference passes every listed change (tls_moved, tls_new, both: 1.00) and most combined
+  ones (0.80 to 0.90), and fails every pure switching instance (0.00): it never says "other".
+- Every automatic gate passes except A6 (local mode; needs a sealed harness). S1 is pending.
+
+Prediction, written before the agent run (AGENTS.md rule 4): with half the instances controls
+that agents get right, the pass rate is 0.5 + 0.5 x (changed pass rate). An agent that matches
+the reference on listed and combined changes reaches 0.73, so this task clears the 75% bar only
+if the best agent notices the switch in fewer than about 1 in 8 pure switching instances. We
+expect Opus 5.5 at high effort to notice it more often than that (agents flagged the unlisted
+flux echo in 42% of instances), so we predict the task fails S1 at about 0.78. If it does, the
+next version makes the listed changes harder (smaller moves near the wander, overlapping
+defects) rather than moving the bar.

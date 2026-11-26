@@ -2,6 +2,123 @@
  "standard": "standard-v1",
  "tasks": [
   {
+   "task": "coherence_tls",
+   "standard": "standard-v1",
+   "verdict": "open",
+   "gates": {
+    "A1": {
+     "status": "pass",
+     "detail": "rubric coherence_tls/rubric-v1"
+    },
+    "A2": {
+     "status": "pass",
+     "detail": "trivial identical per instance; reference 0.7511 stored vs 0.7511 re-run",
+     "evidence": {
+      "reference": [
+       0.7510999676834208,
+       0.7510999676834208
+      ]
+     }
+    },
+    "A3": {
+     "status": "pass",
+     "detail": "trivial 0.500",
+     "evidence": {
+      "trivial": 0.5
+     }
+    },
+    "A4": {
+     "status": "pass",
+     "detail": "worst accept_ref_unchanged +0.000 vs trivial on 4 check seeds",
+     "evidence": {
+      "over_trivial": {
+       "accept_triv_changed": -0.5,
+       "accept_triv_coin": -0.2421875,
+       "accept_ref_changed": -0.22979229501894022,
+       "accept_ref_unchanged": 0.0,
+       "accept_ref_coin": -0.16830953136811974
+      }
+     }
+    },
+    "A5": {
+     "status": "pass",
+     "detail": "9 lazy and leak checks; closest lazy_blind_reopt.py 0.500 against bar 0.550"
+    },
+    "A6": {
+     "status": "pending",
+     "detail": "local mode, open: grader_source, grader_writable, parent_memory, stored_results (closed only by a sealed harness)",
+     "evidence": {
+      "open": [
+       "grader_source",
+       "grader_writable",
+       "parent_memory",
+       "stored_results"
+      ]
+     }
+    },
+    "A7": {
+     "status": "pass",
+     "detail": "reference on swapped data 0.300, trivial 0.500"
+    },
+    "A8": {
+     "status": "pass",
+     "detail": "best known genie_switch 0.954",
+     "evidence": {
+      "known": {
+       "reference": 0.7697839108683925,
+       "genie_switch": 0.9542036436752573
+      }
+     }
+    },
+    "A9": {
+     "status": "pass",
+     "detail": "reference 0.770, trivial 0.500"
+    },
+    "A10": {
+     "status": "pass",
+     "detail": "best known per check: change_call 0.97 (genie_switch, n=160), fix_gap 0.93 (genie_switch, n=80), kinds 0.90 (genie_switch, n=80), no_harm 1.00 (reference, n=80), params 0.87 (genie_switch, n=80)",
+     "evidence": {
+      "low": [],
+      "too_few": []
+     }
+    },
+    "A11": {
+     "status": "pass",
+     "detail": "reference standard error 0.009, 5 seeds"
+    },
+    "A12": {
+     "status": "pass",
+     "detail": "reference solve time 121 s per evaluation (sum over instances, one core)",
+     "evidence": {
+      "solve_s": 121.13
+     }
+    },
+    "A13": {
+     "status": "pass",
+     "detail": "canary present",
+     "evidence": {
+      "uncited": []
+     }
+    },
+    "S1": {
+     "status": "pending",
+     "detail": "no agent runs yet"
+    },
+    "H1": {
+     "status": "pending",
+     "detail": "0 of 2 sign-offs"
+    },
+    "H2": {
+     "status": "pending",
+     "detail": "no blind re-implementation yet"
+    },
+    "H3": {
+     "status": "pending",
+     "detail": "no outlier review yet"
+    }
+   }
+  },
+  {
    "task": "pulse_wrong_model",
    "standard": "standard-v1",
    "verdict": "open",
