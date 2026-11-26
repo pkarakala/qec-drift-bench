@@ -50,8 +50,19 @@ def _pulse(R: ModuleType, row: dict) -> dict:
     )
 
 
+def _coherence(R: ModuleType, row: dict) -> dict:
+    return R.instance_checks(
+        row["rule"],
+        row["changed"] == (row["rule"] == "fix"),
+        row["fix"],
+        row["kind"],
+        row["params"],
+    )
+
+
 # task -> (rubric module, one report instance) -> {check: {"v", "w", ...}}
 READERS: dict[str, Callable[[ModuleType, dict], dict]] = {
+    "coherence_tls": _coherence,
     "pulse_wrong_model": _pulse,
     "readout_drift": _readout,
 }

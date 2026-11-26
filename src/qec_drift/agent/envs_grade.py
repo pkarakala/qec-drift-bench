@@ -99,8 +99,25 @@ def _pulse(rep: dict) -> Iterator[dict]:
         )
 
 
+def _coherence(rep: dict) -> Iterator[dict]:
+    for r in rep["instances"]:
+        changed = r["rule"] == "fix"
+        right = r.get("changed") == changed
+        # the report's diagnosis credit: kinds and params, equal weights (rubric.py)
+        diag = right * (r["kind"] + r["params"]) / 2 if "kind" in r and changed else None
+        yield dict(
+            truth_changed=changed,
+            said=r.get("changed"),
+            fix=r.get("fix"),
+            diag=diag,
+            score=r["score"],
+            error="error" in r,
+        )
+
+
 # task -> its report's instances as (truth_changed, said, fix, diag, score, error)
 READERS: dict[str, Callable[[dict], Iterator[dict]]] = {
+    "coherence_tls": _coherence,
     "pulse_wrong_model": _pulse,
     "readout_drift": _readout,
 }
