@@ -84,3 +84,13 @@ def test_a_close_call_is_marked_when_the_best_interval_spans_the_threshold():
     assert d["status"] == "included" and d["close_call"]
     text = sel.markdown([d], rates, refs, 0.75, {("t", "m"): (0.62, 0.79)})
     assert "| t | included (close call) | 0.60 / 0.70 | 0.70 [0.62, 0.79] / 0.70 |" in text
+
+
+def test_the_leaderboard_page_takes_its_data_inline(tmp_path, monkeypatch):
+    lb = _script("envs_leaderboard")
+    data = dict(threshold=0.75, config="c", built="2026-11-26", tasks=[])
+    monkeypatch.setattr(lb, "board", lambda: data)
+    monkeypatch.setattr(lb, "DOC", tmp_path / "index.html")
+    lb.main()
+    html = (tmp_path / "index.html").read_text()
+    assert "/*DATA*/null" not in html and '"threshold": 0.75' in html

@@ -23,6 +23,7 @@ The replication is in progress. It covers the same 85 tasks for each of 23 suppo
 
 - [Paper PDF: four main pages, plus references and appendix](paper/workshop-20261111/QEC_Drift_Workshop_Paper.pdf), by Logan Mann and Pranav Reddy, University of California, Santa Barbara.
 - [LaTeX source and build instructions](paper/workshop-20261111/README.md).
+- [Data-out task leaderboard](docs/leaderboard/index.html): every task, model and baseline on one page, with each task's acceptance gates. Open the file in a browser; it needs no server.
 - [Interactive failure taxonomy and trace analysis](docs/failure-analysis/README.md) and [failure-analysis plots](docs/failure-atlas-20261110/index.md).
 - [Early replication results](docs/fresh-seed-results-20261110.md) and [literature review](paper/workshop-20261111/LITERATURE_AND_NOVELTY_AUDIT.md).
 
