@@ -49,7 +49,7 @@ instance; native score in brackets.
 - trivial 0.50 (0.50); reference 0.73 (0.77); ceiling genie_switch 0.95 native.
 - The reference passes every listed change (tls_moved, tls_new, both: 1.00) and most combined
   ones (0.80 to 0.90), and fails every pure switching instance (0.00): it never says "other".
-- Every automatic gate passes except A6 (local mode; needs a sealed harness). S1 is pending.
+- Every automatic gate passes except A6 (local mode; needs a sealed harness).
 
 Prediction, written before the agent run (AGENTS.md rule 4): with half the instances controls
 that agents get right, the pass rate is 0.5 + 0.5 x (changed pass rate). An agent that matches
@@ -59,3 +59,9 @@ expect Opus 5.5 at high effort to notice it more often than that (agents flagged
 flux echo in 42% of instances), so we predict the task fails S1 at about 0.78. If it does, the
 next version makes the listed changes harder (smaller moves near the wander, overlapping
 defects) rather than moving the bar.
+
+Result (held-out pilot, Claude Code at xhigh effort, 2 rollouts each): Fable 5.2 0.74
+[0.69, 0.79], Opus 5.5 0.74 [0.69, 0.79]. The prediction was wrong. Neither model noticed the
+switching defect on any pure switching instance (0 of 80 each), so both land at the reference.
+The task is kept, as a close call: its interval spans the bar. Both models pass every listed
+change, so the next version should make the listed changes harder, not the unlisted one.

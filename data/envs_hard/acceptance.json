@@ -101,8 +101,8 @@
      }
     },
     "S1": {
-     "status": "pending",
-     "detail": "no agent runs yet"
+     "status": "pass",
+     "detail": "best agent claude-fable-5-2-xhigh passes 0.74 [0.69, 0.79]"
     },
     "H1": {
      "status": "pending",
@@ -121,7 +121,7 @@
   {
    "task": "pulse_wrong_model",
    "standard": "standard-v1",
-   "verdict": "open",
+   "verdict": "rejected",
    "gates": {
     "A1": {
      "status": "pass",
@@ -218,8 +218,8 @@
      }
     },
     "S1": {
-     "status": "pass",
-     "detail": "best agent claude-sonnet-5-5 passes 0.65 [0.60, 0.69]"
+     "status": "fail",
+     "detail": "best agent claude-fable-5-2-xhigh passes 0.87 [0.82, 0.92]"
     },
     "H1": {
      "status": "pending",
@@ -336,7 +336,7 @@
     },
     "S1": {
      "status": "pass",
-     "detail": "best agent claude-opus-5-5 passes 0.56 [0.48, 0.63]"
+     "detail": "best agent claude-fable-5-2-xhigh passes 0.64 [0.56, 0.72]"
     },
     "H1": {
      "status": "pending",

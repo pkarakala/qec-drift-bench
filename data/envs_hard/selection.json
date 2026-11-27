@@ -4,22 +4,55 @@
  "tasks": [
   {
    "task": "coherence_tls",
-   "status": "pending",
-   "best": null,
-   "best_pass": null,
-   "models": {}
+   "status": "included",
+   "best": "claude-fable-5-2-xhigh",
+   "best_pass": 0.7406,
+   "best_interval": [
+    0.6906,
+    0.7875
+   ],
+   "close_call": true,
+   "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.7406,
+     "score": 0.7777,
+     "rollouts": 2,
+     "interval": [
+      0.6906,
+      0.7875
+     ]
+    },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.7375,
+     "score": 0.779,
+     "rollouts": 2,
+     "interval": [
+      0.6875,
+      0.7875
+     ]
+    }
+   }
   },
   {
    "task": "pulse_wrong_model",
-   "status": "included",
-   "best": "claude-sonnet-5-5",
-   "best_pass": 0.6458,
+   "status": "excluded",
+   "best": "claude-fable-5-2-xhigh",
+   "best_pass": 0.8719,
    "best_interval": [
-    0.6,
-    0.6917
+    0.825,
+    0.9156
    ],
    "close_call": false,
    "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.8719,
+     "score": 0.8935,
+     "rollouts": 2,
+     "interval": [
+      0.825,
+      0.9156
+     ]
+    },
     "claude-opus-5-5": {
      "pass_rate": 0.625,
      "score": 0.7867,
@@ -29,12 +62,21 @@
       0.6667
      ]
     },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.6208,
+     "score": 0.7324,
+     "rollouts": 3,
+     "interval": [
+      0.5771,
+      0.6646
+     ]
+    },
     "claude-sonnet-5-5": {
      "pass_rate": 0.6458,
      "score": 0.8149,
      "rollouts": 3,
      "interval": [
-      0.6,
+      0.5979,
       0.6917
      ]
     }
@@ -43,21 +85,39 @@
   {
    "task": "readout_drift",
    "status": "included",
-   "best": "claude-opus-5-5",
-   "best_pass": 0.56,
+   "best": "claude-fable-5-2-xhigh",
+   "best_pass": 0.64,
    "best_interval": [
-    0.48,
-    0.6333
+    0.56,
+    0.72
    ],
    "close_call": false,
    "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.64,
+     "score": 0.7957,
+     "rollouts": 1,
+     "interval": [
+      0.56,
+      0.72
+     ]
+    },
     "claude-opus-5-5": {
      "pass_rate": 0.56,
      "score": 0.7423,
      "rollouts": 3,
      "interval": [
-      0.48,
+      0.4822,
       0.6333
+     ]
+    },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.4244,
+     "score": 0.644,
+     "rollouts": 3,
+     "interval": [
+      0.3733,
+      0.4756
      ]
     },
     "claude-sonnet-5-5": {

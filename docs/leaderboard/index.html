@@ -10,7 +10,7 @@
   color-scheme: light;
   --page: #f9f9f9; --surface: #ffffff; --ink: #191919; --ink-2: #666666;
   --grid: #e7e7e7; --axis: #c2c2c2; --ring: rgba(11,11,11,0.10);
-  --s1: #257de0; --s2: #f47230; --s3: #00b894;
+  --s1: #257de0; --s2: #f47230; --s3: #00b894; --s4: #f2a600;
   --base: #666666; --bar: #191919;
   --good: #0aac23; --warn: #fbb315; --crit: #dc3c3d;
 }
@@ -19,14 +19,14 @@
     color-scheme: dark;
     --page: #0b0b0b; --surface: #191919; --ink: #efefef; --ink-2: #9c9c9c;
     --grid: #303030; --axis: #474747; --ring: rgba(255,255,255,0.10);
-    --s1: #338ced; --s2: #e76624; --s3: #00a888; --base: #9c9c9c; --bar: #efefef;
+    --s1: #338ced; --s2: #e76624; --s3: #00a888; --s4: #d28e05; --base: #9c9c9c; --bar: #efefef;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --page: #0b0b0b; --surface: #191919; --ink: #efefef; --ink-2: #9c9c9c;
   --grid: #303030; --axis: #474747; --ring: rgba(255,255,255,0.10);
-  --s1: #338ced; --s2: #e76624; --s3: #00a888; --base: #9c9c9c; --bar: #efefef;
+  --s1: #338ced; --s2: #e76624; --s3: #00a888; --s4: #d28e05; --base: #9c9c9c; --bar: #efefef;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--page); color: var(--ink);
@@ -81,13 +81,32 @@ th { color: var(--ink-2); font-weight: 600; }
 const DATA = {
  "threshold": 0.75,
  "config": "envs-v1-2026-11-26",
- "built": "2026-11-26",
+ "built": "2026-11-27",
  "tasks": [
   {
    "task": "coherence_tls",
-   "status": "pending",
-   "close_call": false,
-   "models": {},
+   "status": "included",
+   "close_call": true,
+   "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.7406,
+     "score": 0.7777,
+     "rollouts": 2,
+     "interval": [
+      0.6906,
+      0.7875
+     ]
+    },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.7375,
+     "score": 0.779,
+     "rollouts": 2,
+     "interval": [
+      0.6875,
+      0.7875
+     ]
+    }
+   },
    "baselines": {
     "trivial": {
      "pass_rate": 0.5,
@@ -117,7 +136,7 @@ const DATA = {
     "A11": "pass",
     "A12": "pass",
     "A13": "pass",
-    "S1": "pending",
+    "S1": "pass",
     "H1": "pending",
     "H2": "pending",
     "H3": "pending"
@@ -125,9 +144,18 @@ const DATA = {
   },
   {
    "task": "pulse_wrong_model",
-   "status": "included",
+   "status": "excluded",
    "close_call": false,
    "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.8719,
+     "score": 0.8935,
+     "rollouts": 2,
+     "interval": [
+      0.825,
+      0.9156
+     ]
+    },
     "claude-opus-5-5": {
      "pass_rate": 0.625,
      "score": 0.7867,
@@ -137,12 +165,21 @@ const DATA = {
       0.6667
      ]
     },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.6208,
+     "score": 0.7324,
+     "rollouts": 3,
+     "interval": [
+      0.5771,
+      0.6646
+     ]
+    },
     "claude-sonnet-5-5": {
      "pass_rate": 0.6458,
      "score": 0.8149,
      "rollouts": 3,
      "interval": [
-      0.6,
+      0.5979,
       0.6917
      ]
     }
@@ -161,7 +198,7 @@ const DATA = {
      "score": 0.9263798942980946
     }
    },
-   "verdict": "open",
+   "verdict": "rejected",
    "gates": {
     "A1": "pass",
     "A2": "pass",
@@ -176,7 +213,7 @@ const DATA = {
     "A11": "pass",
     "A12": "pass",
     "A13": "pass",
-    "S1": "pass",
+    "S1": "fail",
     "H1": "pending",
     "H2": "pending",
     "H3": "pending"
@@ -187,13 +224,31 @@ const DATA = {
    "status": "included",
    "close_call": false,
    "models": {
+    "claude-fable-5-2-xhigh": {
+     "pass_rate": 0.64,
+     "score": 0.7957,
+     "rollouts": 1,
+     "interval": [
+      0.56,
+      0.72
+     ]
+    },
     "claude-opus-5-5": {
      "pass_rate": 0.56,
      "score": 0.7423,
      "rollouts": 3,
      "interval": [
-      0.48,
+      0.4822,
       0.6333
+     ]
+    },
+    "claude-opus-5-5-xhigh": {
+     "pass_rate": 0.4244,
+     "score": 0.644,
+     "rollouts": 3,
+     "interval": [
+      0.3733,
+      0.4756
      ]
     },
     "claude-sonnet-5-5": {
@@ -244,7 +299,7 @@ const DATA = {
  ]
 };
 const NS = "http://www.w3.org/2000/svg";
-const SLOTS = ["var(--s1)", "var(--s2)", "var(--s3)"];
+const SLOTS = ["var(--s1)", "var(--s2)", "var(--s3)", "var(--s4)"];
 const BASE = { trivial: "floor (trivial)", reference: "reference" };
 const pct = v => v == null ? "-" : v.toFixed(2);
 
