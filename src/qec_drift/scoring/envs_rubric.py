@@ -39,20 +39,8 @@ def _readout(R: ModuleType, row: dict) -> dict:
     )
 
 
-def _pulse(R: ModuleType, row: dict) -> dict:
-    fix = row["noharm"]
-    if row["rule"] == "fix":
-        gap = (row["L_stale"] - row["L_sol"]) / (row["L_stale"] - row["L_oracle"])
-        fix = float(np.clip(gap, 0, 1))
-    parts = {p: row.get(f"{p}_credit", 1.0) for p in R.PARTS}
-    return R.instance_checks(
-        row["rule"], row["changed"] == (row["kind"] != "control"), fix, row["noharm"], parts
-    )
-
-
 # task -> (rubric module, one report instance) -> {check: {"v", "w", ...}}
 READERS: dict[str, Callable[[ModuleType, dict], dict]] = {
-    "pulse_wrong_model": _pulse,
     "readout_drift": _readout,
 }
 
