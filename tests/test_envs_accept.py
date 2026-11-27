@@ -42,7 +42,7 @@ def test_one_failed_gate_rejects_and_any_pending_gate_leaves_it_open():
     assert acc.verdict(g) == "rejected"
 
 
-@pytest.mark.parametrize("task", ["readout_drift", "pulse_wrong_model"])
+@pytest.mark.parametrize("task", ["readout_drift"])
 def test_every_shipped_task_has_its_files_and_cites_its_numbers(task):
     t = acc.Task(task, dry=True)
     assert t.a1()["status"] == "pass"
@@ -62,8 +62,8 @@ def test_the_readout_rubric_is_rebuilt_from_a_report_row():
 
 
 def test_an_errored_instance_fails_the_valid_answer_gate():
-    R = envs_rubric.load_rubric("pulse_wrong_model")
-    c = envs_rubric.instance_checks("pulse_wrong_model", R, dict(error="timeout", score=0.0))
+    R = envs_rubric.load_rubric("readout_drift")
+    c = envs_rubric.instance_checks("readout_drift", R, dict(error="timeout", score=0.0))
     assert R.total(c) == 0.0
 
 

@@ -390,7 +390,8 @@ def main(argv: list[str] | None = None) -> int:
         cards.append(Task(task, a.dry).run(a.fresh, legitimacy))
         print(f"{task}: {cards[-1]['verdict']}", flush=True)
     old = json.loads(OUT.read_text())["tasks"] if OUT.exists() else []
-    cards = sorted([c for c in old if c["task"] not in {d["task"] for d in cards}] + cards,
+    done = {d["task"] for d in cards}
+    cards = sorted([c for c in old if c["task"] in TASKS and c["task"] not in done] + cards,
                    key=lambda c: c["task"])  # fmt: skip
     OUT.write_text(json.dumps(dict(standard=VERSION, tasks=cards), indent=1) + "\n")
     DOC.write_text(markdown(cards))

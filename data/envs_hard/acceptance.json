@@ -2,123 +2,6 @@
  "standard": "standard-v1",
  "tasks": [
   {
-   "task": "pulse_wrong_model",
-   "standard": "standard-v1",
-   "verdict": "open",
-   "gates": {
-    "A1": {
-     "status": "pass",
-     "detail": "rubric pulse_wrong_model/rubric-v1"
-    },
-    "A2": {
-     "status": "pass",
-     "detail": "trivial identical per instance; reference 0.6230 stored vs 0.6230 re-run",
-     "evidence": {
-      "reference": [
-       0.6230271296531509,
-       0.6230271296531509
-      ]
-     }
-    },
-    "A3": {
-     "status": "pass",
-     "detail": "trivial 0.500",
-     "evidence": {
-      "trivial": 0.5
-     }
-    },
-    "A4": {
-     "status": "pass",
-     "detail": "worst accept_ref_unchanged +0.000 vs trivial on 4 check seeds",
-     "evidence": {
-      "over_trivial": {
-       "accept_triv_changed": -0.5,
-       "accept_triv_coin": -0.265625,
-       "accept_ref_changed": -0.34733658032653086,
-       "accept_ref_unchanged": 0.0,
-       "accept_ref_coin": -0.22125422573997452
-      }
-     }
-    },
-    "A5": {
-     "status": "pass",
-     "detail": "8 lazy and leak checks; closest leak_frames.py 0.500 against bar 0.550"
-    },
-    "A6": {
-     "status": "pending",
-     "detail": "local mode, open: grader_source, grader_writable, parent_memory, stored_results (closed only by a sealed harness)",
-     "evidence": {
-      "open": [
-       "grader_source",
-       "grader_writable",
-       "parent_memory",
-       "stored_results"
-      ]
-     }
-    },
-    "A7": {
-     "status": "pass",
-     "detail": "reference on swapped data 0.370, trivial 0.500"
-    },
-    "A8": {
-     "status": "pass",
-     "detail": "best known genie_drive12 0.926",
-     "evidence": {
-      "known": {
-       "reference": 0.62330636516212,
-       "genie_drive12": 0.9263798942980946
-      }
-     }
-    },
-    "A9": {
-     "status": "pass",
-     "detail": "reference 0.623, trivial 0.500"
-    },
-    "A10": {
-     "status": "pass",
-     "detail": "best known per check: change_call 0.94 (genie_drive12, n=160), diag_compression 1.00 (reference, n=80), diag_f01 1.00 (reference, n=80), diag_other 0.97 (genie_drive12, n=80), diag_scale 0.99 (reference, n=80), diagnosis 0.97 (genie_drive12, n=80), fix_gap 0.97 (genie_drive12, n=75), no_harm 1.00 (genie_drive12, n=85)",
-     "evidence": {
-      "low": [],
-      "too_few": []
-     }
-    },
-    "A11": {
-     "status": "pass",
-     "detail": "reference standard error 0.010, 5 seeds"
-    },
-    "A12": {
-     "status": "pass",
-     "detail": "reference solve time 417 s per evaluation (sum over instances, one core)",
-     "evidence": {
-      "solve_s": 416.644
-     }
-    },
-    "A13": {
-     "status": "pass",
-     "detail": "canary present",
-     "evidence": {
-      "uncited": []
-     }
-    },
-    "S1": {
-     "status": "pass",
-     "detail": "best agent claude-sonnet-5-5 passes 0.65 [0.60, 0.69]"
-    },
-    "H1": {
-     "status": "pending",
-     "detail": "0 of 2 sign-offs"
-    },
-    "H2": {
-     "status": "pending",
-     "detail": "no blind re-implementation yet"
-    },
-    "H3": {
-     "status": "pending",
-     "detail": "no outlier review yet"
-    }
-   }
-  },
-  {
    "task": "readout_drift",
    "standard": "standard-v1",
    "verdict": "open",
@@ -219,7 +102,7 @@
     },
     "S1": {
      "status": "pass",
-     "detail": "best agent claude-opus-5-5 passes 0.56 [0.48, 0.63]"
+     "detail": "best agent claude-fable-5-2-xhigh passes 0.64 [0.56, 0.72]"
     },
     "H1": {
      "status": "pending",
