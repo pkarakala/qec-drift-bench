@@ -34,55 +34,6 @@
    }
   },
   {
-   "task": "pulse_wrong_model",
-   "status": "excluded",
-   "best": "claude-fable-5-2-xhigh",
-   "best_pass": 0.8719,
-   "best_interval": [
-    0.825,
-    0.9156
-   ],
-   "close_call": false,
-   "models": {
-    "claude-fable-5-2-xhigh": {
-     "pass_rate": 0.8719,
-     "score": 0.8935,
-     "rollouts": 2,
-     "interval": [
-      0.825,
-      0.9156
-     ]
-    },
-    "claude-opus-5-5": {
-     "pass_rate": 0.625,
-     "score": 0.7867,
-     "rollouts": 3,
-     "interval": [
-      0.5813,
-      0.6667
-     ]
-    },
-    "claude-opus-5-5-xhigh": {
-     "pass_rate": 0.6208,
-     "score": 0.7324,
-     "rollouts": 3,
-     "interval": [
-      0.5771,
-      0.6646
-     ]
-    },
-    "claude-sonnet-5-5": {
-     "pass_rate": 0.6458,
-     "score": 0.8149,
-     "rollouts": 3,
-     "interval": [
-      0.5979,
-      0.6917
-     ]
-    }
-   }
-  },
-  {
    "task": "readout_drift",
    "status": "included",
    "best": "claude-fable-5-2-xhigh",

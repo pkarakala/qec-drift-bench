@@ -33,11 +33,6 @@ def _readout(h: ModuleType, tier: str) -> list[tuple[str, dict]]:
     return out
 
 
-def _pulse(h: ModuleType, tier: str) -> list[tuple[str, dict]]:
-    h.use_tier(tier)
-    return [(inst["kind"], inst["data"]) for inst in h.build(h.TIERS[tier]["seed"], h.N_INSTANCES)]
-
-
 def _coherence(h: ModuleType, tier: str) -> list[tuple[str, dict]]:
     return [(fam, dict(h.build(s, i, fam)["data"], tier=tier))
             for s, i, fam in h.instance_list(None, tier=tier)]  # fmt: skip
@@ -48,7 +43,6 @@ def _coherence(h: ModuleType, tier: str) -> list[tuple[str, dict]]:
 # harness builds its instances in its own way.
 TASKS: dict[str, tuple[int, Callable[[ModuleType, str], list], Callable[[str], bool]]] = {
     "coherence_tls": (120, _coherence, lambda fam: fam.startswith("switch")),
-    "pulse_wrong_model": (120, _pulse, lambda fam: "drive12" in fam),
     "readout_drift": (120, _readout, lambda fam: "iq_stretch" in fam.split("+")),
 }
 

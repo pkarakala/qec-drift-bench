@@ -1,8 +1,4 @@
 env,model,rollout,outcome,pass_rate,score,instances
-coherence_tls,claude-fable-5-2-xhigh,0,submitted,0.7375,0.772775,160
-coherence_tls,claude-fable-5-2-xhigh,1,submitted,0.74375,0.782531,160
-coherence_tls,claude-opus-5-5-xhigh,0,submitted,0.7375,0.778197,160
-coherence_tls,claude-opus-5-5-xhigh,1,submitted,0.7375,0.779837,160
 pulse_wrong_model,claude-fable-5-2-xhigh,0,submitted,0.8,0.876262,160
 pulse_wrong_model,claude-fable-5-2-xhigh,1,submitted,0.94375,0.910695,160
 pulse_wrong_model,claude-opus-5-5-xhigh,0,submitted,0.6125,0.774664,160

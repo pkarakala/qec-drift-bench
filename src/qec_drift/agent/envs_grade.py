@@ -87,18 +87,7 @@ def _readout(rep: dict) -> Iterator[dict]:
         )
 
 
-def _pulse(rep: dict) -> Iterator[dict]:
-    for r in rep["instances"]:
-        yield dict(
-            truth_changed=r["kind"] != "control",
-            said=r.get("changed"),
-            fix=r.get("fix"),
-            diag=r.get("diag"),
-            score=r["score"],
-            error="error" in r,
-        )
-
-
+# task -> its report's instances as (truth_changed, said, fix, diag, score, error)
 def _coherence(rep: dict) -> Iterator[dict]:
     for r in rep["instances"]:
         changed = r["rule"] == "fix"
@@ -115,10 +104,8 @@ def _coherence(rep: dict) -> Iterator[dict]:
         )
 
 
-# task -> its report's instances as (truth_changed, said, fix, diag, score, error)
 READERS: dict[str, Callable[[dict], Iterator[dict]]] = {
     "coherence_tls": _coherence,
-    "pulse_wrong_model": _pulse,
     "readout_drift": _readout,
 }
 
