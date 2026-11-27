@@ -1,0 +1,32 @@
+{
+ "config": "610127d098da971597c2dbc1a9a59a2cb2fce1c7f1a9e4908ab7c531c8861c7a",
+ "tasks": {
+  "coherence_tls": {
+   "files": {
+    "TASK.md": "61898f298cb6b4e458f1ef4caa4ed9e01a54c5e8c9748a822a7ab5179fa997fa",
+    "checks/expect.json": "897de604d075f58253743aeb5c279cb7f8fad872aed35b738ccb59b5d2c92798",
+    "eval/_isolate.py": "c1c342ba02a7ba22a4b1945ed4c977b4f7d02f8fa51aab57a6b1eb0bb17ed679",
+    "eval/_reference.py": "90415752c4790df891ff0fb5e00eaf84e76e368860f380ef8e39f59e26711936",
+    "eval/_trivial.py": "ab5d034484a413a6daea35207c439ff46ebadf93ae5e1ade9ce34534fdf3f52b",
+    "eval/harness.py": "52775a2dd3bc6dc917dafa3d1248c1bf4a1f4f7499cef42f817f2f17df837d68",
+    "eval/rubric.py": "01b02f1314611bbb82bbb86b06505317fcfb549caa7238aecba0f3319fa69974",
+    "evaluate.py": "7bb523d93100fee47ee5c23cf7e9c4ad95c68bd4a91f3c5713a64a9fde49a863"
+   },
+   "rubric": "coherence_tls/rubric-v1"
+  },
+  "readout_drift": {
+   "files": {
+    "TASK.md": "cc3a78f87cd61d84749fe7db883b0a400c33dbe4de7f5f13f845fade69197e74",
+    "checks/expect.json": "d446a83de63b0b4d56fbebab556bbe8cbc9b5546ea4d6d83d9f622c5f1d67ce4",
+    "eval/_isolate.py": "c1c342ba02a7ba22a4b1945ed4c977b4f7d02f8fa51aab57a6b1eb0bb17ed679",
+    "eval/_reference.py": "ef4c8045f3f720506bd9fc5db5c65f63725f23160badadad6730d0e86f1b14f8",
+    "eval/_trivial.py": "40caaef7e967f68146f5715da88587741da78cdf911e151b8461d770921fb64a",
+    "eval/harness.py": "bbdb568189c98cd54744be5e538464c9718803757002214314861ccebc042e2e",
+    "eval/rubric.py": "51d58f90219af03993c15a7a2d54b8b163cbb8c15e40e4f73a90540335770fe5",
+    "evaluate.py": "a3676884ea6d507eb479022418887a1d149fab648fea270fd534ad9a8c5b118a"
+   },
+   "rubric": "readout_drift/rubric-v1"
+  }
+ },
+ "version": "envs-v1-2026-11-26"
+}
